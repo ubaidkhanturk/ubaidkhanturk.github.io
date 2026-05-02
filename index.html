@@ -495,8 +495,8 @@
       position: relative;
       margin-bottom: 60px;
       opacity: 0;
-      transform: translateX(-20px);
-      transition: all 0.6s ease;
+      transform: translateX(-50px);
+      transition: all 1.5s ease;
     }
 
     .timeline-item.visible {
@@ -1338,7 +1338,10 @@
     }, { threshold: 0.15 });
 
     reveals.forEach(el => observer.observe(el));
-    timelineItems.forEach(el => observer.observe(el));
+    timelineItems.forEach((el, index) => {
+  el.style.transitionDelay = `${index * 0.3}s`;  /* 👈 each item waits 0.3s more */
+  observer.observe(el);
+	});
 
     // ── Skill Bars
     const skillFills = document.querySelectorAll('.skill-fill');

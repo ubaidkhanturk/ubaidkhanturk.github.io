@@ -442,7 +442,39 @@
     /* ─── EXPERIENCE ─── */
     #experience {
       background: var(--black);
+	  position: relative;
+	  background-image: url('experencepic.png');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
     }
+	
+	#experience::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.95);
+		filter: grayscale(100%);
+		z-index: 0;
+	}
+
+	/* this makes background image black & white */
+	#experience::after {
+		content: '';
+		position: absolute;
+		inset: 0;
+		background-image: url('experencepic.png');
+		background-size: cover;
+		background-position: center;
+		background-attachment: fixed;
+		filter: grayscale(100%) opacity(2%);  /* 👈 B&W + 50% opacity */
+		z-index: 0;
+	}
+
+	#experience > * {
+		position: relative;
+		z-index: 1;   /* 👈 keeps text above background */
+	}
 
     .timeline {
       position: relative;
